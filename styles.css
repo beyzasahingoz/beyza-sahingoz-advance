@@ -1,5 +1,49 @@
 body{
     margin:0;
-    background-color: pink;
     text-align: center;
+    background-color: rgb(177, 186, 194);
 }
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 390px;
+}
+
+td,
+th {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #3bc99388;
+}
+tr:nth-child(odd) {
+    background-color: #00000088;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  a:link {
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:visited {
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:hover {
+    color: rgb(65, 62, 66);
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  a:active {
+    color: rgb(131, 131, 76);
+    background-color: transparent;
+    text-decoration: underline;
+  }
