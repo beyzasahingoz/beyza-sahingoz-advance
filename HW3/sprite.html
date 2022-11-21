@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>HW3</title>
+
+  <style> 
+    body { max-width: 440px; background-color: rgba(22, 21, 21, 0.948);}
+    button {
+        border: none;
+        color: rgb(82, 75, 82);
+        padding: 5px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+    <button type="button" id="start">Start</button>
+    <button type="button" id="pause">Pause</button>
+    <button type="button" id="stop">Stop</button>
+    <button type="button" id="next">Next</button>
+    <button type="button" id="prev">Prev</button>
+    <img src="https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic1.PNG" id="img">
+
+<script>
+    let move = 0;
+    var clickedButton = false;
+    var runTime = true;
+
+    const fetchImage = async url => {
+        const response = await fetch(url)
+        const blob = await response.blob()
+        return blob
+    }
+
+    const img = document.getElementById("img");
+
+    function start() {
+        let i = 0;
+        setInterval(function(){
+            if(runTime){
+                i++;
+                if(i>=10){
+                    i = 1;
+                }
+                console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".PNG");
+                fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".PNG").then(blob => {
+                const imageBlob = blob;
+                const imageBase64 = URL.createObjectURL(imageBlob);
+                img.src = imageBase64;
+                console.log(move + " : " + imageBase64);
+                });
+                move = i;
+            }
+        },100)
+    }
+
+    function pause() {
+        let i = move;
+        setInterval(function(){
+            if(runTime){
+                i++;
+                if(i>= 10){
+                    i = 1;
+                }
+                console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".PNG");
+                fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".PNG").then(blob => {
+                const imageBlob = blob;
+                const imageBase64 = URL.createObjectURL(imageBlob);
+                img.src = imageBase64;
+                console.log(move + " : " + imageBase64);
+            });
+            move = i;
+            }
+        },100)
+        
+    }
+    
+    const startButton = document.getElementById("start");
+    startButton.addEventListener("click", () => {
+        runTime = true;
+        start();
+    })
+
+    const pauseButton = document.getElementById("pause");
+    pauseButton.addEventListener("click", () => {
+        runTime = !runTime;
+        clickedButton = true;
+        pause();
+    })
+
+    const stopButton = document.getElementById("stop");
+    stopButton.addEventListener("click", () => {
+        clickedButton = true;
+        runTime = false;
+    })
+
+    const nextButton = document.getElementById("next");
+    nextButton.addEventListener("click", () => {
+        if(clickedButton){
+            move++;
+            if(move >= 10) {
+                move = 1;
+            }
+            console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".PNG");
+            fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".PNG").then(blob => {
+            const imageBlob = blob;
+            const imageBase64 = URL.createObjectURL(imageBlob);
+            img.src = imageBase64;
+            console.log(move + " : " + imageBase64);
+            });
+        }
+    })
+
+    const prevButton = document.getElementById("prev");
+    prevButton.addEventListener("click", () => {
+        if(clickedButton){
+            move--;
+            if(move <= 0) {
+                move = 9;
+            }
+            console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".PNG");
+            fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".PNG").then(blob => {
+            const imageBlob = blob;
+            const imageBase64 = URL.createObjectURL(imageBlob);
+            img.src = imageBase64;
+            console.log(move + " : " + imageBase64);
+            });
+        }
+    })
+
+</script>
+</body>
+</html>
