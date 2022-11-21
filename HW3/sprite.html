@@ -27,7 +27,7 @@
     <button type="button" id="stop">Stop</button>
     <button type="button" id="next">Next</button>
     <button type="button" id="prev">Prev</button>
-    <img src="https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic1.PNG" id="img">
+    <img src="https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic1.png" id="img">
 
 <script>
     let move = 0;
@@ -50,8 +50,8 @@
                 if(i>=10){
                     i = 1;
                 }
-                console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".PNG");
-                fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".PNG").then(blob => {
+                console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".png");
+                fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".png").then(blob => {
                 const imageBlob = blob;
                 const imageBase64 = URL.createObjectURL(imageBlob);
                 img.src = imageBase64;
@@ -70,8 +70,8 @@
                 if(i>= 10){
                     i = 1;
                 }
-                console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".PNG");
-                fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".PNG").then(blob => {
+                console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".png");
+                fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + i.toString() + ".png").then(blob => {
                 const imageBlob = blob;
                 const imageBase64 = URL.createObjectURL(imageBlob);
                 img.src = imageBase64;
@@ -109,8 +109,8 @@
             if(move >= 10) {
                 move = 1;
             }
-            console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".PNG");
-            fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".PNG").then(blob => {
+            console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".png");
+            fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".png").then(blob => {
             const imageBlob = blob;
             const imageBase64 = URL.createObjectURL(imageBlob);
             img.src = imageBase64;
@@ -126,8 +126,8 @@
             if(move <= 0) {
                 move = 9;
             }
-            console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".PNG");
-            fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".PNG").then(blob => {
+            console.log("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".png");
+            fetchImage("https://beyzasahingoz.github.io/advanced-programming/HW3/spritesheets/Pic" + move.toString() + ".png").then(blob => {
             const imageBlob = blob;
             const imageBase64 = URL.createObjectURL(imageBlob);
             img.src = imageBase64;
