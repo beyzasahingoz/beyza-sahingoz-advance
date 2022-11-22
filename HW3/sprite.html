@@ -59,27 +59,30 @@
             const blob = await response.blob()
             return blob
         }
-
+        let id;
         const img = document.getElementById("img");
 
         function start() {
+            running = true;
             let i = 0;
-            setInterval(function () {
-                if (runTime) {
-                    i++;
-                    if (i >= 10) {
-                        i = 1;
+            if (!id) {
+               id=setInterval(function () {
+                    if (runTime) {
+                        i++;
+                        if (i >= 10) {
+                            i = 1;
+                        }
+                        console.log("https://beyzasahingoz.github.io/beyza-sahingoz-advance/HW3/spritesheets/Pic" + i.toString() + ".png");
+                        fetchImage("https://beyzasahingoz.github.io/beyza-sahingoz-advance/HW3/spritesheets/Pic" + i.toString() + ".png").then(blob => {
+                            const imageBlob = blob;
+                            const imageBase64 = URL.createObjectURL(imageBlob);
+                            img.src = imageBase64;
+                            console.log(move + " : " + imageBase64);
+                        });
+                        move = i;
                     }
-                    console.log("https://beyzasahingoz.github.io/beyza-sahingoz-advance/HW3/spritesheets/Pic" + i.toString() + ".png");
-                    fetchImage("https://beyzasahingoz.github.io/beyza-sahingoz-advance/HW3/spritesheets/Pic" + i.toString() + ".png").then(blob => {
-                        const imageBlob = blob;
-                        const imageBase64 = URL.createObjectURL(imageBlob);
-                        img.src = imageBase64;
-                        console.log(move + " : " + imageBase64);
-                    });
-                    move = i;
-                }
-            }, 100)
+                }, 100)
+            }
         }
 
         function pause() {
