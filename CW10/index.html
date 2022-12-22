@@ -110,16 +110,23 @@ class Graph extends Menu {
   getPixelAt(x, y) {
     return this.context.getImageData(x, y, 1, 1).data;
   }
+  red_green() {
+    let id = this.context.getImageData(0, 0, this.W, this.H);
+    let data = id.data;
+    for (let i = 0; i < data.length; i += 4) {
+      let avg = (data[i] + data[i + 1]) / 2;
+      data[i]   = avg; // red
+      data[i+1] = avg; // green
+    }
+    this.context.putImageData(id, 0, 0);
+  }
     
    flipHorizontal(){
     cx.translate(img.width,0);
     cx.scale(-1,1);
     cx.drawImage(img,0,0);
     document.querySelector('canvas');
-
     const card = document.querySelector('canvas');
-    
-   
   }
 }
     
