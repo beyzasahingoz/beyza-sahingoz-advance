@@ -26,6 +26,11 @@ const restartButton = document.getElementById('restartButton')
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]')
 let circleTurn
 var currentClass
+let oWinsText = document.getElementById("o-wins").innerText
+let xWinsText = document.getElementById("x-wins").innerText
+
+let oWins = isNaN(parseInt(oWinsText)) ? 0 : parseInt(oWinsText)
+let xWins = isNaN(parseInt(xWinsText)) ? 0 : parseInt(xWinsText)
 startGame()
 
 restartButton.addEventListener('click', startGame)
@@ -66,8 +71,16 @@ function endGame(draw) {
   if (draw) {
     winningMessageTextElement.innerText = 'Draw!'
   } else {
-    winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} Wins!`
+    if (circleTurn) {
+      winningMessageTextElement.innerText = 'O Wins!'
+      oWins++
+    } else {
+      winningMessageTextElement.innerText = 'X Wins!'
+      xWins++
+    }
   }
+  document.getElementById("o-wins").innerText = oWins
+document.getElementById("x-wins").innerText = xWins
   winningMessageElement.classList.add('show')
 }
 
