@@ -1,49 +1,173 @@
-body{
-    margin:0;
-    text-align: center;
-    background-color: rgb(177, 186, 194);
+:root {
+  --cell-size: 100px;
+  --mark-size: calc(var(--cell-size) * .9);
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: rgb(173, 104, 200);
 }
 
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 390px;
+h1 {
+  margin-left: 100px;
+  /*670*/
+}
+a:link {
+  color: rgb(213, 225, 193);
+  background-color: transparent;
+  text-decoration: none;
+}
+#game {
+  display: flex;
+  justify-content: center;
+}
+#currentClass {
+  font-weight: bold;
+  margin-left: 150px;
+  /*700*/
+}
+#winnerCount {
+  font-weight: bold;
+  margin-left: 50px;
+  margin-top: 50px;
+  width:300px;
+  height:100px;
+  background-color: rgb(217, 206, 206);
 }
 
-td,
-th {
-    border: 1px solid #000000;
-    text-align: left;
-    padding: 8px;
+.board {
+  width: 400px;
+  height: 320px;
+  /*margin-left: 550px;*/
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto)
+  }
+
+.cell {
+  width: var(--cell-size);
+    height: var(--cell-size);
+    border: 1px solid rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
 }
 
-tr:nth-child(even) {
-    background-color: #3bc99388;
+.cell:nth-child(3n + 1) {
+  border-left: none;
 }
-tr:nth-child(odd) {
-    background-color: #00000088;
+
+.cell:nth-child(3n + 3) {
+  border-right: none;
 }
-.center {
-    margin-left: auto;
-    margin-right: auto;
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after,
+.cell.circle::before {
+  background-color: rgb(255, 255, 255);
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.circle):hover::before,
+.board.x .cell:not(.x):not(.circle):hover::after {
+  content: '';
+  position: absolute;
+  width: calc(var(--mark-size) * .15);
+  height: var(--mark-size);
+}
+.cell.x::before,
+  .board.x .cell:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
   }
-  a:link {
-    color: rgb(0, 0, 0);
-    background-color: transparent;
-    text-decoration: none;
+  
+  .cell.x::after,
+  .board.x .cell:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
   }
-  a:visited {
-    color: rgb(255, 255, 255);
-    background-color: transparent;
-    text-decoration: none;
+  
+  .cell.circle::before,
+  .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::before,
+  .board.circle .cell:not(.x):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
   }
-  a:hover {
-    color: rgb(65, 62, 66);
-    background-color: transparent;
-    text-decoration: underline;
+  
+  .cell.circle::before,
+  .board.circle .cell:not(.x):not(.circle):hover::before {
+    width: var(--mark-size);
+    height: var(--mark-size);
   }
-  a:active {
-    color: rgb(131, 131, 76);
-    background-color: transparent;
-    text-decoration: underline;
+  
+  .cell.circle::after,
+  .board.circle .cell:not(.x):not(.circle):hover::after {
+    width: calc(var(--mark-size) * .7);
+    height: calc(var(--mark-size) * .7);
+    background-color:#ad68c8;
   }
+  
+  .winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .9);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 4rem;
+    flex-direction: column;
+  }
+  
+  .winning-message button {
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .25em .5em;
+    cursor: pointer;
+  }
+  
+  .winning-message button:hover {
+    background-color: black;
+    color: white;
+    border-color: white;
+  }
+  
+  .winning-message.show {
+    display: flex;
+  }
+ /* @media (max-width: 400px) {
+    .board {
+    width: 300px;
+    height: 240px;
+    }
+    .cell {
+    --cell-size: 75px;
+    --mark-size: calc(var(--cell-size) * .9);
+    }
+    } */
