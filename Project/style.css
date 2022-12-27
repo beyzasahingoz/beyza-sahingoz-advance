@@ -12,6 +12,11 @@ h1 {
   margin-left: 100px;
   /*670*/
 }
+a:link {
+  color: rgb(213, 225, 193);
+  background-color: transparent;
+  text-decoration: none;
+}
 #game {
   display: flex;
   justify-content: center;
